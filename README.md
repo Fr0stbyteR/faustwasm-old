@@ -200,6 +200,15 @@ process = ba.pulsen(1, 10000) : pm.djembe(60, 0.3, 0.4, 1);
 })();
 ```
 
+### Projects examples
+
+The package is used in the following projects:
+
+- [faust-web-component](https://github.com/grame-cncm/faust-web-component), a package providing two web components for embedding interactive Faust snippets in web pages.
+- [Faust Playground](https://github.com/grame-cncm/faustplayground), a Web platform designed to enable children to learn basic audio programming in a simple and graphic way. 
+- [Faust Editor](https://github.com/grame-cncm/fausteditor), an online editor used to edit, compile and run Faust code from any recent Web Browser with WebAssembly support. 
+- [Testing the embedded dynamic Faust compiler](https://fausteditor.grame.fr/faustlive-wasm.html) page allows to test the compiler, with this [HTML source code](https://github.com/grame-cncm/fausteditor/blob/master/faustlive-wasm.html) using [this JavaScript code](https://github.com/grame-cncm/fausteditor/blob/master/src/faustlive-wasm.js).
+
 ## Documentation
 
 -  [Organisation of the API](#org)
@@ -249,7 +258,7 @@ This level takes a Faust Wasm instance to build an audio node. [AudioWorklet](ht
 
 Note that ScriptProcessor is marked as [deprecated](https://developer.mozilla.org/en-US/docs/Web/API/ScriptProcessorNode) but it's the only audio architecture available in older Safari versions. Both monophonic (generators, effects...) or polyphonic (instruments) nodes can be created. It is described in `FaustScriptProcessorNode.ts` file.
 
-By default, and to save CPU, created audio nodes are not processing audio buffers. They have to be explicitely started with the `start` method (and possibly stopped if needed using the `stop`method).
+Created audio nodes have a `start` and stop` methods. When started (which is done by default), they are processing audio buffers. You may have to explicitly stop them to save CPU (and start then again when needed), if for instance several nodes are created at init time before actual use. 
 
 An offline processor to render a DSP in a non real-time context and get the computed frames is available. It is described in `FaustOfflineProcessor.ts`. It will automatically use the `start` and `stop` methods internally to activate actual rendering in its `plot` method. 
 

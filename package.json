@@ -1,6 +1,6 @@
 {
   "name": "@grame/faustwasm",
-  "version": "0.0.32",
+  "version": "0.0.48",
   "description": "WebAssembly version of Faust Compiler",
   "main": "dist/cjs/index.js",
   "types": "dist/esm/index.d.ts",
@@ -26,6 +26,11 @@
     "audio",
     "signal processing"
   ],
+  "bin": {
+      "faust2sndfile-ts": "scripts/faust2sndfile.js",
+      "faust2svg-ts": "scripts/faust2svg.js",
+      "faust2wasm-ts": "scripts/faust2wasm.js"
+  },
   "author": "Grame-CNCM",
   "license": "LGPL-3.0",
   "bugs": {
@@ -34,7 +39,7 @@
   "homepage": "https://github.com/grame-cncm/faustwasm#readme",
   "devDependencies": {
     "@aws-crypto/sha256-js": "^2.0.1",
-    "@shren/faust-ui": "^1.1.2",
+    "@shren/faust-ui": "^1.1.5",
     "@types/emscripten": "^1.39.5",
     "@types/node": "^16.11.7",
     "@types/webmidi": "^2.0.6",
